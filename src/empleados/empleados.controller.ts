@@ -9,13 +9,10 @@ export class EmpleadosController {
     getEmpleado(){
         return this.servicio.getEmpleado();
     }
-    @Post()
-    agregarEmpleado(@Body()modelo:empleadoModel){
-        return this.servicio.agregarEmpleado(modelo);
-    }
+    
     @Get(':id')
-    getEmpleadoByID(@Param('id') id:string){
-        return this.servicio.getEmpleadoByID(id);
+    getEmpleadoByID(@Param('id') id:number){
+        return this.servicio.getEmpleadoById(id);
     }
     @Delete(':id')
     eliminarEmpleado(@Param('id') id:number){
@@ -24,6 +21,10 @@ export class EmpleadosController {
     @Put(':id/salario')
     modificarSalario(@Param('id') id:number,@Body('salario') salario:number){
         return this.servicio.modificarSalario(id,salario);
+    }
+    @Post()
+    agregarEmpleado(@Body() modelo: empleadoModel){
+        return this.servicio.agregarEmpleado(modelo);
     }
     
 }

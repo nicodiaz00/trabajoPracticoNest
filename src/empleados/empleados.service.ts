@@ -24,7 +24,7 @@ export class EmpleadosService {
     public getEmpleado(){
         return this.empleados;
     }
-    getEmpleadoByID(id:number){
+    public getEmpleadoById(id:number){
         for(let i = 0; i < this.empleados.length;i++){
             if(this.empleados[i].id== id){
                 return this.empleados[i]
@@ -32,14 +32,15 @@ export class EmpleadosService {
         }
         
     }
-    agregarEmpleado(empleado:empleadoModel){
+    public agregarEmpleado(empleado:empleadoModel){
         let trabajor = {
             "id": empleado.id,
             "nombre": empleado.nombre,
             "telefono":empleado.telefono,
             "salario":empleado.salario,
         }
-    return this.empleados.push(trabajor);
+        this.empleados.push(trabajor);
+        return "Empleado agregado";
     }
 
     modificarEmpleado(id:number,nombre:string,telefono:number,salario:number){
@@ -55,23 +56,24 @@ export class EmpleadosService {
         return "empleado no encontrado";
     }
 
-    eliminarEmpleado(id:number){
+    public eliminarEmpleado(id:number){
+        let empleadosNuevos = [];
         for(let i = 0; i< this.empleados.length;i++){
-            if (this.empleados[i].id == id){
-                return this.empleados.splice(i,1);
+            if (id !==this.empleados[i].id ){
+                empleadosNuevos.push(this.empleados[i]);
             }
-            else{
-                return "alumno no encontrado";
-            }
+            
         }
+         return empleadosNuevos;
     }
-    modificarSalario(id:number,salarioNuevo:number){
+    public modificarSalario(id:number,salarioNuevo:number){
         for(let i = 0; i< this.empleados.length;i ++){
             if(id == this.empleados[i]){
                 this.empleados[i].salario = salarioNuevo;
                 return this.empleados;
             }
         }
+            
     }
 
 }
