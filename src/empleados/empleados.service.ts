@@ -21,11 +21,16 @@ export class EmpleadosService {
         }
         this.empleados.push(empleado);
     }
-    getEmpleado(){
+    public getEmpleado(){
         return this.empleados;
     }
-    getEmpleadoByID(id):string{
-        return this.empleados[id]
+    getEmpleadoByID(id:number){
+        for(let i = 0; i < this.empleados.length;i++){
+            if(this.empleados[i].id== id){
+                return this.empleados[i]
+            }
+        }
+        
     }
     agregarEmpleado(empleado:empleadoModel){
         let trabajor = {
