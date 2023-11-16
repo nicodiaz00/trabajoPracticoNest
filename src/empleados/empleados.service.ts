@@ -56,19 +56,24 @@ export class EmpleadosService {
         return "empleado no encontrado";
     }
 
-    public eliminarEmpleado(id:number){
-        let empleadosNuevos = [];
+    public eliminarEmpleado(id:string){
+        
         for(let i = 0; i< this.empleados.length;i++){
-            if (id !==this.empleados[i].id ){
-                empleadosNuevos.push(this.empleados[i]);
+            let contador = 0;
+            if (id ==this.empleados[i].id ){
+                contador = 1;
+                this.empleados.splice(i,1);
+                
+            }
+                
             }
             
         }
-         return empleadosNuevos;
-    }
-    public modificarSalario(id:number,salarioNuevo:number){
+         
+    
+    public modificarSalario(id:string,salarioNuevo:empleadoModel){
         for(let i = 0; i< this.empleados.length;i ++){
-            if(id == this.empleados[i]){
+            if(id == this.empleados[i].id){
                 this.empleados[i].salario = salarioNuevo;
                 return this.empleados;
             }
