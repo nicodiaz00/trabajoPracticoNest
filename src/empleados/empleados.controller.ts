@@ -15,14 +15,10 @@ export class EmpleadosController {
         return this.servicio.getEmpleadoById(id);
     }
     @Delete(':id')
-    eliminarEmpleado(@Param('id') id:number){
+    eliminarEmpleado(@Param('id') id:string){
         return this.servicio.eliminarEmpleado(id);
     }
-    /*@Put(':id')
-    modificarSalario(@Body() salario:empleadoModel,@Param('id') id:string){
-        return this.servicio.modificarSalario(id,salario);
-    }
-    */
+    
     @Put(':id')
     modificarSalario(@Body() salario: empleadoModel,@Param('id') id:string){
         return this.servicio.modificarSalario(id, salario);

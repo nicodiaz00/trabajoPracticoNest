@@ -59,14 +59,16 @@ export class EmpleadosService {
     public eliminarEmpleado(id:string){
         
         for(let i = 0; i< this.empleados.length;i++){
-            let contador = 0;
+            
             if (id ==this.empleados[i].id ){
-                contador = 1;
+                
                 this.empleados.splice(i,1);
+                return "empleado eliminado"
+                
+                }
                 
             }
-                
-            }
+            
             
         }
          
