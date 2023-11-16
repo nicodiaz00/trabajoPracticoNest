@@ -73,14 +73,19 @@ export class EmpleadosService {
         }
          
     
-    public modificarSalario(id:string,salarioNuevo:empleadoModel){
+    public modificarSalario(id:string,nuevoSalario:empleadoModel){
         for(let i = 0; i< this.empleados.length;i ++){
             if(id == this.empleados[i].id){
-                this.empleados[i].salario = salarioNuevo;
+                this.empleados[i].salario = nuevoSalario.salario;
                 return this.empleados;
+                
             }
+            
         }
             
     }
+    
+
+    
 
 }

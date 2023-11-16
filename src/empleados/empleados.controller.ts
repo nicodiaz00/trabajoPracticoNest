@@ -1,4 +1,4 @@
-import { Controller,Body,Delete,Get,Param,Post,Put } from '@nestjs/common';
+import { Controller,Body,Delete,Get,Param,Post,Put, ParseIntPipe } from '@nestjs/common';
 import { EmpleadosService } from './empleados.service';
 import { empleadoModel } from './empleadoModel';
 @Controller('empleados')
@@ -20,9 +20,14 @@ export class EmpleadosController {
     }
     
     @Put(':id')
-    modificarSalario(@Body() salario: empleadoModel,@Param('id') id:string){
-        return this.servicio.modificarSalario(id, salario);
+    modificarSalario(@Body() salario:empleadoModel,@Param('id') id:string){
+        return this.servicio.modificarSalario(id,salario);
     }
+    
+   
+    
+
+
     @Post()
     agregarEmpleado(@Body() modelo: empleadoModel){
         return this.servicio.agregarEmpleado(modelo);
